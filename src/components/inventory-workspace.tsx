@@ -59,7 +59,6 @@ export function InventoryWorkspace({
         headerName: "SKU",
         pinned: "left",
         minWidth: 130,
-        checkboxSelection: true,
       },
       {
         field: "name",
@@ -141,6 +140,13 @@ export function InventoryWorkspace({
       filter: true,
       resizable: true,
       floatingFilter: true,
+    }),
+    [],
+  );
+
+  const rowSelection = useMemo(
+    () => ({
+      mode: "multiRow" as const,
     }),
     [],
   );
@@ -258,7 +264,7 @@ export function InventoryWorkspace({
                 quickFilterText={quickFilter}
                 pagination
                 paginationPageSize={8}
-                rowSelection="multiple"
+                rowSelection={rowSelection}
                 animateRows
                 onCellValueChanged={onCellValueChanged}
                 getRowStyle={({ data }) => {
